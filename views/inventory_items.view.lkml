@@ -73,7 +73,6 @@ view: inventory_items {
 
   dimension: product_id {
     type: number
-    # hidden: yes
     sql: ${TABLE}.product_id ;;
   }
 

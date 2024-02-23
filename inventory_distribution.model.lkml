@@ -21,18 +21,18 @@ datagroup: every_four_datagroup {
 }
 
 explore:  inventory_items{
-  always_filter: {
-    filters: [products.category: "Active"]
-    }
+  # always_filter: {
+  #   filters: [products.category: "Active"]
+  #   }
   join: products {
-    type: left_outer
+    type: inner
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
 
   }
 
   join: distribution_centers {
-    type: left_outer
+    type: inner
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
     relationship: many_to_one
   }
