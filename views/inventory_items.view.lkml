@@ -67,7 +67,7 @@ view: inventory_items {
   }
 
   dimension: product_distribution_center_id {
-    type: number
+    type: string
     sql: ${TABLE}.product_distribution_center_id ;;
   }
 
