@@ -9,6 +9,7 @@ view: orders {
   # You need to define a primary key in a view in order to join to other views.
 
   dimension: order_id {
+    description: "primary key for orders"
     primary_key: yes
     type: number
     sql: ${TABLE}.order_id ;;
@@ -32,6 +33,7 @@ view: orders {
     # This dimension will be called "Gender" in Explore.
 
   dimension: gender {
+    description: "gender of user associated with order id"
     type: string
     sql: ${TABLE}.gender ;;
   }
@@ -66,11 +68,13 @@ view: orders {
   }
 
   dimension: status {
+    description: "status of order"
     type: string
     sql: ${TABLE}.status ;;
   }
 
   dimension: user_id {
+    description: "id of user associated with order"
     type: number
     # hidden: yes
     sql: ${TABLE}.user_id ;;
