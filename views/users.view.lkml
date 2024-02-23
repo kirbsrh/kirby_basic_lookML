@@ -127,5 +127,5 @@ view: users {
   }
   measure: count {
     type: count
-    drill_fields: [id, last_name, first_name, orders.count, order_items.count]}
+    drill_fields: [id, last_name, first_name, orders.count, order_items.count, traffic_source, is_female]}
   }
