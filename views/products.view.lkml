@@ -30,6 +30,7 @@ view: products {
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
+    value_format:"$#.00;($#.00)"
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
@@ -38,10 +39,12 @@ view: products {
 
   measure: total_cost {
     type: sum
-    sql: ${cost} ;;  }
+    sql: ${cost} ;;
+    value_format:"$#.00;($#.00)"}
   measure: average_cost {
     type: average
-    sql: ${cost} ;;  }
+    sql: ${cost} ;;
+    value_format:"$#.00;($#.00)"}
 
   dimension: department {
     type: string
@@ -62,6 +65,7 @@ view: products {
   dimension: retail_price {
     type: number
     sql: ${TABLE}.retail_price ;;
+    value_format:"$#.00;($#.00)"
   }
 
   dimension: sku {
@@ -70,6 +74,6 @@ view: products {
   }
   measure: count {
     type: count
-    drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
+    drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count, sku, category]
   }
 }
