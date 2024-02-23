@@ -52,7 +52,7 @@ view: products {
   }
 
   dimension: distribution_center_id {
-    type: string
+    type: number
     # hidden: yes
     sql: ${TABLE}.distribution_center_id ;;
   }
