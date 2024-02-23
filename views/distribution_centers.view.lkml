@@ -10,7 +10,7 @@ view: distribution_centers {
 
   dimension: id {
     primary_key: yes
-    type: number
+    type: string
     sql: ${TABLE}.id ;;
   }
     # Here's what a typical dimension looks like in LookML.
