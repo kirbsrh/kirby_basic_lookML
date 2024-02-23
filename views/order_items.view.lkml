@@ -9,6 +9,7 @@ view: order_items {
   # You need to define a primary key in a view in order to join to other views.
 
   dimension: id {
+    description: "primary key for order items"
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
@@ -34,12 +35,14 @@ view: order_items {
     # This dimension will be called "Inventory Item ID" in Explore.
 
   dimension: inventory_item_id {
+    description: "id for inventory item"
     type: number
     # hidden: yes
     sql: ${TABLE}.inventory_item_id ;;
   }
 
   dimension: order_id {
+    description: "id for order"
     type: number
     # hidden: yes
     sql: ${TABLE}.order_id ;;
@@ -52,8 +55,10 @@ view: order_items {
   }
 
   dimension: sale_price {
+    description: "sale price for order item"
     type: number
     sql: ${TABLE}.sale_price ;;
+    value_format: "$#.00;($#.00)"
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
@@ -62,10 +67,12 @@ view: order_items {
 
   measure: total_sale_price {
     type: sum
-    sql: ${sale_price} ;;  }
+    sql: ${sale_price} ;;
+    value_format: "$#.00;($#.00)"}
   measure: average_sale_price {
     type: average
-    sql: ${sale_price} ;;  }
+    sql: ${sale_price} ;;
+    value_format: "$#.00;($#.00)"}
 
   dimension_group: shipped {
     type: time
@@ -76,11 +83,13 @@ view: order_items {
   }
 
   dimension: status {
+    description: "status of order item"
     type: string
     sql: ${TABLE}.status ;;
   }
 
   dimension: user_id {
+    description: "id for user"
     type: number
     # hidden: yes
     sql: ${TABLE}.user_id ;;
@@ -93,14 +102,14 @@ view: order_items {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	users.last_name,
-	users.id,
-	users.first_name,
-	inventory_items.id,
-	inventory_items.product_name,
-	orders.order_id
-	]
+  id,
+  users.last_name,
+  users.id,
+  users.first_name,
+  inventory_items.id,
+  inventory_items.product_name,
+  orders.order_id
+  ]
   }
 
 }
