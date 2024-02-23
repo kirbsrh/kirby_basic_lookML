@@ -9,6 +9,7 @@ view: products {
   # You need to define a primary key in a view in order to join to other views.
 
   dimension: id {
+    description: "primary key of product"
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
@@ -18,16 +19,19 @@ view: products {
     # This dimension will be called "Brand" in Explore.
 
   dimension: brand {
+    description: "name of brand"
     type: string
     sql: ${TABLE}.brand ;;
   }
 
   dimension: category {
+    description: "name of category"
     type: string
     sql: ${TABLE}.category ;;
   }
 
   dimension: cost {
+    description: "cost of product"
     type: number
     sql: ${TABLE}.cost ;;
     value_format:"$#.00;($#.00)"
@@ -38,36 +42,43 @@ view: products {
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
   measure: total_cost {
+    description: "sum of cost"
     type: sum
     sql: ${cost} ;;
     value_format:"$#.00;($#.00)"}
   measure: average_cost {
+    description: "average cost"
     type: average
     sql: ${cost} ;;
     value_format:"$#.00;($#.00)"}
 
   dimension: department {
+    description: "department"
     type: string
     sql: ${TABLE}.department ;;
   }
 
   dimension: distribution_center_id {
+    description: "id of distribution center"
     type: string
     sql: ${TABLE}.distribution_center_id ;;
   }
 
   dimension: name {
+    description: "name of product"
     type: string
     sql: ${TABLE}.name ;;
   }
 
   dimension: retail_price {
+    description: "retail price for product"
     type: number
     sql: ${TABLE}.retail_price ;;
     value_format:"$#.00;($#.00)"
   }
 
   dimension: sku {
+    description: "product SKU"
     type: string
     sql: ${TABLE}.sku ;;
   }
