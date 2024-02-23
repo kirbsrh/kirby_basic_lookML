@@ -21,16 +21,12 @@ datagroup: every_four_datagroup {
 }
 
 explore:  inventory_items{
-  # always_filter: {
-  #   filters: [products.category: "Active"]
-  #   }
+  label: "Inventory Items"
   join: products {
     type: inner
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
-
   }
-
   join: distribution_centers {
     type: inner
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
