@@ -20,19 +20,33 @@ datagroup: every_four_datagroup {
   description: "Interval trigger set for every four hours to catch new updates"
 }
 
-explore:  inventory_items{
-  label: "Inventory Items"
-  join: products {
-    type: inner
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
-    relationship: many_to_one
-  }
+explore: inventory_items {
   join: distribution_centers {
-    type: inner
-    sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
+    type: left_outer
     relationship: many_to_one
+    sql_on: ${inventory_items.product_distribution_center_id} = ${distribution_centers.id} ;;
+  }
+  join: products {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${distribution_centers.id} = ${products.distribution_center_id} ;;
   }
 }
+
+
+# explore:  inventory_items{
+#   label: "Inventory Items"
+#   join: products {
+#     type: inner
+#     sql_on: ${inventory_items.product_id} = ${products.id} ;;
+#     relationship: many_to_one
+#   }
+#   join: distribution_centers {
+#     type: inner
+#     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
+#     relationship: many_to_one
+#   }
+# }
 
 explore: order_items {
   persist_with: every_four_datagroup
