@@ -40,8 +40,8 @@ view: distribution_centers {
 
   dimension: dc_location {
     type: location
-    sql_latitude: ${latitude} ;;
-    sql_longitude: ${longitude} ;;
+    sql_latitude: ${TABLE}.latitude ;;
+    sql_longitude: ${TABLE}.longitude ;;
   }
 
   dimension: name {
