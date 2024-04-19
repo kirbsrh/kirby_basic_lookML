@@ -21,6 +21,10 @@ datagroup: every_four_datagroup {
 }
 
 explore: inventory_items {
+  access_filter: {
+    field: products.brand
+    user_attribute: brand_kirby_test
+  }
   join: distribution_centers {
     type: left_outer
     relationship: many_to_one
