@@ -22,7 +22,7 @@ datagroup: every_four_datagroup {
 
 explore: inventory_items {
   access_filter: {
-    field: products.brand
+    field: inventory_items.product_brand
     user_attribute: brand_kirby_test
   }
   join: distribution_centers {
@@ -30,11 +30,11 @@ explore: inventory_items {
     relationship: many_to_one
     sql_on: ${inventory_items.product_distribution_center_id} = ${distribution_centers.id} ;;
   }
-  join: products {
-    type: left_outer
-    relationship: one_to_many
-    sql_on: ${distribution_centers.id} = ${products.distribution_center_id} ;;
-  }
+  # join: products {
+  #   type: left_outer
+  #   relationship: one_to_many
+  #   sql_on: CAST(${distribution_centers.id} AS STRING) = CAST(${products.distribution_center_id} AS STRING) ;;
+  # }
 }
 
 
